@@ -39,9 +39,6 @@ st.header("Part 1: General SHAP Analysis")
 st.dataframe(classification_report(y_pred, y_test,output_dict=True))
 #st.text(classification_report(y_pred, y_test))
 
-
-
-
 # Summary plot for class 1
 st.subheader("Summary Plot for Class 1")
 fig, ax = plt.subplots()
@@ -54,7 +51,9 @@ st.header("Part 2: Individual Input Prediction & Explanation")
 # Input fields for features
 input_data = {}
 for feature in X.columns:
-    if feature in ['customerID', 'gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 'MultipleLines', 'InternetService',	'OnlineSecurity',	'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges',	'TotalCharges']:
+    if feature in ['customerID', 'gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity',
+                   'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 
+                   'PaymentMethod', 'MonthlyCharges','TotalCharges']:
         input_data[feature] = st.number_input(f"Enter {feature}:", value=int(X_test[feature].mean()), step=1)
     else:  # For other features, keep the original input type
         input_data[feature] = st.number_input(f"Enter {feature}:", value=X_test[feature].mean())
