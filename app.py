@@ -35,7 +35,9 @@ st.title("SHAP Analysis for Customer Churn")
 
 # Part 1: General SHAP Analysis
 st.header("Part 1: General SHAP Analysis")
-st.dataframe(classification_report(y_pred, y_test,output_dict=True))
+#st.dataframe(classification_report(y_pred, y_test,output_dict=True))
+st.text(classification_report(y_pred, y_test))
+
 
 
 
@@ -49,13 +51,22 @@ st.pyplot(fig)
 st.header("Part 2: Individual Input Prediction & Explanation")
 
 # Input fields for features
-input_data = {}
+#input_data = {}
+#for feature in X.columns:
+   # if feature in ['Call  Failure', 'Complains', 'Subscription  Length', 'Status' 'Seconds of Use',
+                  # 'Frequency of use', 'Frequency of SMS', 'Distinct Called Numbers', 'Age Group', 'Age']:
+     #   input_data[feature] = st.number_input(f"Enter {feature}:", value=int(X_test[feature].mean()), step=1)
+  #  else:  # For other features, keep the original input type
+       # input_data[feature] = st.number_input(f"Enter {feature}:", value=X_test[feature].mean())
+
+input_data[feature] = st.number_input(f"Enter {feature}:", value=int(X_test[feature].mean()), step=1)
 for feature in X.columns:
-    if feature in ['Call  Failure', 'Complains', 'Subscription  Length', 'Status' 'Seconds of Use',
+    if feature in ['Call  Failure', 'Complains', 'Subscription  Length', 'Status', 'Seconds of Use', 
                    'Frequency of use', 'Frequency of SMS', 'Distinct Called Numbers', 'Age Group', 'Age']:
         input_data[feature] = st.number_input(f"Enter {feature}:", value=int(X_test[feature].mean()), step=1)
     else:  # For other features, keep the original input type
         input_data[feature] = st.number_input(f"Enter {feature}:", value=X_test[feature].mean())
+
 
 
 # Create a DataFrame from input data
@@ -83,5 +94,7 @@ st_shap(shap.force_plot(explainer.expected_value[1], shap_values_input[0][:,1], 
 # Decision plot
 st.subheader("Decision Plot for class 1")
 
-st_shap(shap.decision_plot(explainer.expected_value[1], shap_values_input[:,:,1], X_test.columns))
+#st_shap(shap.decision_plot(explainer.expected_value[1], shap_values_input[:,:,1], X_test.columns))
+st_shap(shap.decision_plot(explainer.expected_value[1], shap_values_input[1], input_df.columns))
+
 # st.pyplot(fig)
