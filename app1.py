@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 from streamlit_shap import st_shap
 
 # Load the dataset (assuming it's in the same directory)
-customer = pd.read_csv("WA_Fn-UseC_-Telco-Customer-Churn")
+customer = pd.read_csv("WA_Fn-UseC_-Telco-Customer-Churn.csv")
 
 # Preprocessing
 X = customer.drop("Churn", axis=1)
