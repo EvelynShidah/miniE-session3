@@ -35,8 +35,8 @@ st.title("SHAP Analysis for Customer Churn")
 
 # Part 1: General SHAP Analysis
 st.header("Part 1: General SHAP Analysis")
-#st.dataframe(classification_report(y_pred, y_test,output_dict=True))
-st.text(classification_report(y_pred, y_test))
+st.dataframe(classification_report(y_pred, y_test,output_dict=True))
+#st.text(classification_report(y_pred, y_test))
 
 
 
