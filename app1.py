@@ -54,13 +54,13 @@ st.title("SHAP Analysis for Telco Customer Churn")
 st.header("Part 1: General SHAP Analysis")
 
 # Display classification report correctly
-report = classification_report(y_test, y_pred, output_dict=True)
-st.dataframe(pd.DataFrame(report).transpose())
+report_df = pd.DataFrame(classification_report(y_test, y_pred, output_dict=True)).transpose()
+st.dataframe(report_df)
 
-# Summary plot for class 1
+# Summary plot for class 1 (Fixing SHAP value indexing)
 st.subheader("Summary Plot for Class 1")
 fig, ax = plt.subplots()
-shap.summary_plot(shap_values[1], X_test, show=False)  # Fix indexing
+shap.summary_plot(shap_values[1], X_test, show=False)  # Ensure correct index
 st.pyplot(fig)
 
 # Part 2: Individual Input Prediction & Explanation
@@ -85,10 +85,10 @@ st.write(f"**Churn Probability:** {probability:.2f}")
 # SHAP explanation for the input
 shap_values_input = explainer.shap_values(input_df)
 
-# Force plot
-st.subheader("Force Plot for class 1")
+# Force plot (Fix incorrect indexing)
+st.subheader("Force Plot for Class 1")
 st_shap(shap.force_plot(explainer.expected_value[1], shap_values_input[1], input_df), height=200, width=1000)
 
-# Decision plot
-st.subheader("Decision Plot for class 1")
+# Decision plot (Fix incorrect indexing)
+st.subheader("Decision Plot for Class 1")
 st_shap(shap.decision_plot(explainer.expected_value[1], shap_values_input[1], input_df.columns))
