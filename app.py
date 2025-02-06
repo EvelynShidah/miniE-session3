@@ -50,7 +50,7 @@ st.pyplot(fig)
 # Part 2: Individual Input Prediction & Explanation
 st.header("Part 2: Individual Input Prediction & Explanation")
 
- Input fields for features
+# Input fields for features
 input_data = {}
 for feature in X.columns:
     if feature in ['Call  Failure', 'Complains', 'Subscription  Length', 'Status' 'Seconds of Use',
