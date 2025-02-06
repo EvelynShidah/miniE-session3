@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Streamlit config files
+/.streamlit/
+
+# Virtual environment folder
+venv/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# IDE files
+.vscode/
+.idea/
+
+# Dataset files (if not including in repo)
+Customer Churn.csv
