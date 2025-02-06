@@ -1,7 +1,3 @@
-!pip install streamlit
-!npm install -g localtunnel
-!pip install streamlit_shap
-
 %%writefile app.py
 import streamlit as st
 import shap
