@@ -1,5 +1,3 @@
-pip install -r requirements.txt
-
 %%writefile app.py
 import streamlit as st
 import shap
